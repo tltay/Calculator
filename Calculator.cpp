@@ -1,7 +1,4 @@
 // This application is to create a calculator to let user to do calculation
-//testing456789
-// testing123
-//testing 101112
 
 
 #include <iostream>
