@@ -6,6 +6,25 @@
 
 using namespace std;
 
+bool isint(string num) {
+    for (int i = 0; i < num.length(); i++) {
+        if (isdigit(num[i]) == false) {
+            return false;
+        }
+    }
+    return true;
+}
+
+bool isOperation(char operation) {
+    string operationlist = "+-*/%^";
+    for (int i = 0; i < operationlist.length(); i++) {
+        if (operationlist[i] == operation) {
+            return true;
+        }
+    }
+    return false;
+}
+
 int add(int first, int second) {
 	return first + second;
 }
@@ -58,15 +77,22 @@ int doOperation(char operation, int firstNo, int secondNo) {
 }
 
 int main() {
-	int first{};
-	char operation{};
-	int result{};
+	string infirst;
+	int first;
+	char operation;
+	int result;
 
 	cout << "This is a calculator which do + - * / % ^" << endl;
 
 	do {
-		cout << "Enter number : ";
-		cin >> first;
+		cout << "Please enter a number : ";
+                cin >> infirst;
+                while (isint(infirst) != true) {
+                        cout << "Error!" << endl;
+                        cout << "Please enter a number : ";
+                        cin >> infirst;
+                }
+		first = stoi(infirst);
 		if (operation != NULL) {
 			cout << result << " " << operation << " " << first;
 
@@ -79,11 +105,16 @@ int main() {
 
 		cout << result;
 		cout << endl;
-		cout << "Enter operation: ";
-		cin >> operation;
-
+		cout << "Please enter an operation: ";
+                cin >> operation;
+                while (isOperation(operation) != true) {
+                        cout << "Error!" << endl;
+                        cout << "Please choose your operation: ";
+                        cin >> operation;
+                }
+		
 	} while (operation != '=');
 
-	cout << "final asnwer = " << result;
+	cout << "Final asnwer = " << result;
 	return 0;
 }
