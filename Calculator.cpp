@@ -7,22 +7,22 @@
 using namespace std;
 
 bool isint(string num) {
-    for (int i = 0; i < num.length(); i++) {
-        if (isdigit(num[i]) == false) {
-            return false;
+        for (int i = 0; i < num.length(); i++) {
+                if (isdigit(num[i]) == false) {
+                        return false;
+                }
         }
-    }
-    return true;
+        return true;
 }
 
 bool isOperation(char operation) {
-    string operationlist = "+-*/%^";
-    for (int i = 0; i < operationlist.length(); i++) {
-        if (operationlist[i] == operation) {
-            return true;
+        string operationlist = "+-*/%^";
+        for (int i = 0; i < operationlist.length(); i++) {
+                if (operationlist[i] == operation) {
+                        return true;
+                }
         }
-    }
-    return false;
+        return false;
 }
 
 int add(int first, int second) {
