@@ -8,7 +8,9 @@ using namespace std;
 
 bool isint(string num) {
         for (int i = 0; i < num.length(); i++) {
-                if (isdigit(num[i]) == false) {
+
+			// just use !boolean return from function
+                if (!isdigit(num[i])) {
                         return false;
                 }
         }
@@ -16,13 +18,19 @@ bool isint(string num) {
 }
 
 bool isOperation(char operation) {
-        string operationlist = "+-*/%^";
+        string operationlist = " +-*/%^";
+		return operationlist.find(operation);
+
+		// do not need this use string.find will do
+		/*if ( {
+			
+		}
         for (int i = 0; i < operationlist.length(); i++) {
                 if (operationlist[i] == operation) {
                         return true;
                 }
-        }
-        return false;
+        }*/
+        /*return false;*/
 }
 
 int add(int first, int second) {
@@ -76,18 +84,21 @@ int doOperation(char operation, int firstNo, int secondNo) {
 	}
 }
 
+const char EQUAL_SIGN = '=';
 int main() {
-	string infirst;
-	int first;
-	char operation;
-	int result;
+	// use brace initialisation
+	string infirst{};
+	int first{};
+	char operation{};
+	int result{};
 
 	cout << "This is a calculator which do + - * / % ^" << endl;
 
 	do {
 		cout << "Please enter a number : ";
                 cin >> infirst;
-                while (isint(infirst) != true) {
+				// use ! boolean return from funtion
+                while (!isint(infirst)) {
                         cout << "Error!" << endl;
                         cout << "Please enter a number : ";
                         cin >> infirst;
@@ -107,14 +118,15 @@ int main() {
 		cout << endl;
 		cout << "Please enter an operation: ";
                 cin >> operation;
-                while (isOperation(operation) != true) {
+				//  use ! boolean return from functions
+                while (!isOperation(operation)) {
                         cout << "Error!" << endl;
                         cout << "Please choose your operation: ";
                         cin >> operation;
                 }
-		
-	} while (operation != '=');
+		// use a global constant
+	} while (operation != EQUAL_SIGN);
 
-	cout << "Final asnwer = " << result;
+	cout << "Final answer = " << result;
 	return 0;
 }
